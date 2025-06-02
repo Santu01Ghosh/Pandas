@@ -1,0 +1,21 @@
+Interpolation means filling missing values (NaN) using some kind of logic based on the existing data — such as linear, polynomial, or time-based estimation.
+
+| Day | Temperature | Linear | Index | Pad  | Bfill | Polynomial (order=2) |
+| --- | ----------- | ------ | ----- | ---- | ----- | -------------------- |
+| Mon | 30.0        | 30.00  | 30.00 | 30.0 | 35.0  | 30.00                |
+| Tue | NaN         | 32.50  | 32.50 | 30.0 | 35.0  | 32.50                |
+| Wed | 35.0        | 35.00  | 35.00 | 35.0 | 40.0  | 35.00                |
+| Thu | NaN         | 37.50  | 37.50 | 35.0 | 40.0  | 37.50                |
+| Fri | 40.0        | 40.00  | 40.00 | 40.0 | 42.0  | 40.00                |
+| Sat | 42.0        | 42.00  | 42.00 | 42.0 | 42.0  | 42.00                |
+
+
+| Method       | Description                                                                  |
+| ------------ | ---------------------------------------------------------------------------- |
+| `linear`     | Linearly interpolates between known values.                                  |
+| `index`      | Same as linear here since index is sequential, but can differ in date index. |
+| `pad`        | Fills missing values using the previous known value.                         |
+| `bfill`      | Fills missing values using the next known value.                             |
+| `polynomial` | Fits a 2nd-degree polynomial to interpolate missing values.                  |
+
+
